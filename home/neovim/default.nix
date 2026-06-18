@@ -8,7 +8,7 @@
     vimAlias = true;
   };
 
-  # init.lua should be in /home/nvim in this repo
+  # init.lua should be in /neovim/nvim in this repo
   xdg.configFile."nvim".source = ./nvim;
 
   home.packages = with pkgs; [

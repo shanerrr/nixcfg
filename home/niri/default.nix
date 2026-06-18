@@ -1,34 +1,66 @@
 { config, pkgs, ... }:
 
 {
-  ##### Terminal (kitty) #####
-  programs.kitty = {
-    enable = true;
-    settings = {
-      confirm_os_window_close = 0;
-      enable_audio_bell = false;
-      window_padding_width = 6;
-    };
-    font.name = "JetBrainsMono Nerd Font";
-    font.size = 12;
-  };
-
   ##### Launcher (rofi) — modern rofi has Wayland support built in #####
   programs.rofi.enable = true;
 
   ##### niri #####
   programs.niri.settings = {
+    hotkey-overlay.skip-at-startup = true;
+    prefer-no-csd = true;
+
     # Input
     input.keyboard.xkb.layout = "us";
+    input.keyboard.xkb.options = "caps:escape";
     input.touchpad = {
       tap = true;
       natural-scroll = true;
     };
+    input.mouse = {
+      accel-profile = "flat";
+    };
+    input.focus-follows-mouse = {
+      enable = true;
+      max-scroll-amount = "0%";
+    };
 
     # Layout
     layout = {
-      gaps = 16;
-      # focus-ring = { width = 4; active.color = "#7fc8ff"; };
+        gaps = 7;
+        center-focused-column = "never";
+
+        preset-column-widths = [
+        { proportion = 0.33333; }
+        { proportion = 0.5; }
+        { proportion = 0.66667; }
+        ];
+
+        default-column-width = { proportion = 0.5; };
+
+        focus-ring = {
+            enable = false;
+            width = 3;
+        };
+
+        border = {
+            enable = true;
+            width = 3;
+            active.gradient = {
+                from = "#7aa2f7ee";
+                to = "#bb9af7ee";
+                angle = 45;
+                relative-to = "workspace-view";
+            };
+        };
+
+        shadow = {
+            enable = true;
+            draw-behind-window = true;
+            softness = 30;
+            spread = 5;
+            offset = { x = 0; y = 5; };
+            color = "#0007";
+        };
     };
 
     # Where screenshots are saved (set to null to only copy to clipboard).
@@ -36,6 +68,48 @@
 
     spawn-at-startup = [
       # { command = [ "waybar" ]; }
+    ];
+
+    # Outputs 
+    outputs = {
+        "DP-1" = {
+            mode = { width = 1920; height = 1080; refresh = 60.000; };
+            position = { x = 0; y = 650; };
+        };
+
+        "DP-2" = {
+            mode = { width = 1920; height = 1080; refresh = 144.000; };
+            focus-at-startup = true;
+            position = { x = 1920; y = 650; };
+        };
+
+        "HDMI-A-1" = {
+            mode = { width = 1920; height = 1080; refresh = 60.000; };
+            transform.rotation = 270;
+            position = { x = 3840; y = 0; };
+        };
+    };
+
+    window-rules = [
+    {
+        matches = [ { is-active = true; } ];
+        opacity = 0.97;
+    }
+    {
+        matches = [ { is-active = false; } ];
+        opacity = 0.90;
+    }
+    {
+        matches = [ { app-id = "zen"; } ];
+        draw-border-with-background = false;
+    }
+    {
+        matches = [
+        { app-id = "zen"; }
+        { title = "(Twitch|YouTube|Kick)"; }
+        ];
+        opacity = 1.0;
+    }
     ];
 
     # Keybinds.
