@@ -46,8 +46,8 @@
             enable = true;
             width = 3;
             active.gradient = {
-                from = "#7aa2f7ee";
-                to = "#bb9af7ee";
+                from = "#0099cc";
+                to = "#333399";
                 angle = 45;
                 relative-to = "workspace-view";
             };
@@ -67,7 +67,7 @@
     screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
     spawn-at-startup = [
-      # { command = [ "waybar" ]; }
+    { command = [ "swaybg" "-i" "/home/shaner/Pictures/wallpaper.png" "-m" "fill" ]; }
     ];
 
     # Outputs 

@@ -1,10 +1,10 @@
 return {
 	{
-		"folke/tokyonight.nvim",
+		"bjarneo/ethereal.nvim",
 		lazy = false,
 		opts = { style = "night" },
 		config = function()
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd.colorscheme("ethereal")
 		end,
 	},
 }

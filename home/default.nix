@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     fastfetch
     lazygit
+    swaybg
     claude-code
   ];
 
