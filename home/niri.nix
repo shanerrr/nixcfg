@@ -232,9 +232,9 @@
       "Mod+Q".action       = toggle-column-tabbed-display;
 
       # --- Screenshots ---
-      "Mod+Shift+S".action = screenshot;
-      "Ctrl+Print".action  = screenshot-screen;
-      "Alt+Print".action   = screenshot-window;
+      "Mod+Shift+S".action.screenshot = [];
+      "Ctrl+Print".action.screenshot-screen = [];
+      "Alt+Print".action.screenshot-window = [];
 
       # --- Shortcut inhibitor escape hatch ---
       "Mod+Escape" = {
