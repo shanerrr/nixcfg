@@ -38,21 +38,7 @@
       # { command = [ "waybar" ]; }
     ];
 
-    # ----------------------------------------------------------------------
     # Keybinds.
-    #
-    # Translated from your binds.kdl. Notes:
-    #   * Most actions use the `config.lib.niri.actions` helpers (the `with`
-    #     line below), e.g. `action = close-window;` or `action = spawn "x";`.
-    #   * Binds that carry a property (repeat / cooldown-ms / allow-when-locked
-    #     / allow-inhibiting / hotkey-overlay-title) use the attrset form:
-    #       "Key" = { <property> = ...; action = <action>; };
-    #   * `move-column-to-workspace <n>` uses the DIRECT form with the number
-    #     in a list, to work around niri-flake issue #944.
-    #   * niri's commented-out example binds were left out (they did nothing).
-    #   * `zen-browser` and `spf` must be installed for those binds to do
-    #     anything; an unknown command just silently no-ops.
-    # ----------------------------------------------------------------------
     binds = with config.lib.niri.actions; {
 
       # --- Help overlay ---
@@ -60,23 +46,23 @@
 
       # --- Launch programs ---
       "Mod+T" = {
-        hotkey-overlay-title = "Open a Terminal: kitty";
+        hotkey-overlay.title = "Open a Terminal: kitty";
         action = spawn "kitty";
       };
       "Mod+Space" = {
-        hotkey-overlay-title = "Run an Application: Rofi";
+        hotkey-overlay.title = "Run an Application: Rofi";
         action = spawn-sh "rofi -show drun";
       };
       "Mod+E" = {
-        hotkey-overlay-title = "Run file explorer";
+        hotkey-overlay.title = "Run file explorer";
         action = spawn "kitty" "-e" "spf";
       };
       "Mod+B" = {
-        hotkey-overlay-title = "Open Zen Browser";
+        hotkey-overlay.title = "Open Zen Browser";
         action = spawn "zen-browser";
       };
       "Mod+Shift+P" = {
-        hotkey-overlay-title = "Open Zen Browser (Private)";
+        hotkey-overlay.title = "Open Zen Browser (Private)";
         action = spawn-sh "zen-browser --private-window";
       };
 
@@ -246,9 +232,9 @@
       "Mod+Q".action       = toggle-column-tabbed-display;
 
       # --- Screenshots ---
-      "Mod+Shift+S".action.screenshot = [];
-      "Ctrl+Print".action.screenshot-screen = [];
-      "Alt+Print".action.screenshot-window = [];
+      "Mod+Shift+S".action = screenshot;
+      "Ctrl+Print".action  = screenshot-screen;
+      "Alt+Print".action   = screenshot-window;
 
       # --- Shortcut inhibitor escape hatch ---
       "Mod+Escape" = {
