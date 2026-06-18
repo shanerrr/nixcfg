@@ -6,6 +6,9 @@
   programs.niri.package = pkgs.niri;   
   niri-flake.cache.enable = false;     
 
+  # Firefox (browser)
+  programs.firefox.enable = true;
+
   # Graphical login that starts a niri session
   services.greetd = {
     enable = true;

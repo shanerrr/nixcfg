@@ -58,12 +58,12 @@
         action = spawn "kitty" "-e" "spf";
       };
       "Mod+B" = {
-        hotkey-overlay.title = "Open Zen Browser";
-        action = spawn "zen-browser";
+        hotkey-overlay.title = "Open Firefox";
+        action = spawn "firefox";
       };
       "Mod+Shift+P" = {
-        hotkey-overlay.title = "Open Zen Browser (Private)";
-        action = spawn-sh "zen-browser --private-window";
+        hotkey-overlay.title = "Open Firefox (Private)";
+        action = spawn-sh "firefox --private-window";
       };
 
       # --- Volume (PipeWire / WirePlumber) ---
