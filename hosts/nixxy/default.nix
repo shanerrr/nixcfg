@@ -1,10 +1,14 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix    
     ../../modules/desktop.nix       
   ];
+
+  # enable unfree for only certain packages
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "claude-code" ];
 
   ##### Flakes #####
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

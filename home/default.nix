@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     fastfetch
     lazygit
+    claude-code
   ];
 
   programs.home-manager.enable = true;

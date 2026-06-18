@@ -20,14 +20,14 @@
     nixosConfigurations.nixxy = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/nixxy            # imports ./hosts/nixxy/default.nix
+        ./hosts/nixxy            
         niri.nixosModules.niri
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.shaner = import ./home;   # imports ./home/default.nix
+            users.shaner = import ./home;   
             backupFileExtension = "backup";
           };
         }
