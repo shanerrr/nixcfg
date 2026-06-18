@@ -17,7 +17,7 @@
   networking.hostName = "nixxy";   # must match nixosConfigurations.<name> in flake.nix
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/Edmonton";       # e.g. "Europe/London", "America/New_York"
+  time.timeZone = "America/Edmonton";       
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 

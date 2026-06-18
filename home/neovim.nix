@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -8,7 +8,7 @@
     vimAlias = true;
   };
 
-  # Put your init.lua / lua/ dir at home/nvim/.
+  # init.lua should be in /home/nvim in this repo
   xdg.configFile."nvim".source = ./nvim;
 
   home.packages = with pkgs; [

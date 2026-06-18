@@ -3,6 +3,7 @@
 {
   imports = [
     ./niri.nix
+    ./neovim.nix
   ];
 
   home.username = "shaner";
@@ -10,7 +11,6 @@
 
   # Per-user packages go here
   home.packages = with pkgs; [
-    neovim
   ];
 
   programs.home-manager.enable = true;
