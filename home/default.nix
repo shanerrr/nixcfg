@@ -17,6 +17,7 @@
     lazygit
     swaybg
     claude-code
+    discord
   ];
 
   programs.home-manager.enable = true;

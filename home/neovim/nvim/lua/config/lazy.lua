@@ -19,10 +19,8 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
-	-- automatically check for plugin updates
-	install = { colorscheme = { "tokyonight", "habamax" } },
+    -- mainly for nixOS so lazy-lock lives outside for write access
+    lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
 	checker = { enabled = true },
 	performance = {
 		rtp = {
