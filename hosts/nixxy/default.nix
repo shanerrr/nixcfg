@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix    
-    ../../modules/desktop.nix       
+    ./hardware-configuration.nix
+    ../../modules/desktop.nix
   ];
 
   # enable unfree for only certain packages
@@ -21,7 +21,7 @@
   networking.hostName = "nixxy";   # must match nixosConfigurations.<name> in flake.nix
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/Edmonton";       
+  time.timeZone = "America/Edmonton";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 

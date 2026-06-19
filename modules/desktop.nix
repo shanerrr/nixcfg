@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   ##### niri (configured via niri-flake) #####
   programs.niri.enable = true;
-  programs.niri.package = pkgs.niri;   
-  niri-flake.cache.enable = false;     
+  programs.niri.package = pkgs.niri;
+  niri-flake.cache.enable = true;
 
   # Firefox (browser)
   programs.firefox.enable = true;

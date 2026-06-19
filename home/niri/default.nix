@@ -67,7 +67,7 @@
     { command = [ "swaybg" "-i" "/home/shaner/Pictures/wallpaper.png" "-m" "fill" ]; }
     ];
 
-    # Outputs 
+    # Outputs
     outputs = {
         "DP-1" = {
             mode = { width = 1920; height = 1080; refresh = 60.000; };

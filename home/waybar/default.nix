@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.waybar = {
@@ -14,7 +14,6 @@
 
         modules-left   = [ "custom/logo" "niri/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right  = [ ];
 
         "custom/logo" = {
           format = "";
