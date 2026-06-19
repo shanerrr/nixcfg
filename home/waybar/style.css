@@ -1,0 +1,57 @@
+* {
+  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(10, 12, 24, 0.95);
+  color: #c6cae0;
+}
+
+#custom-logo {
+  color: #8c7bd6;
+  font-size: 13px;
+  padding: 0 10px 0 12px;
+}
+
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  padding: 0;
+  margin: 9px 3px;
+  min-width: 16px;
+  min-height: 12px;
+  font-size: 0;
+  background-color: #4a4d64;
+  border-radius: 999px;
+  transition: min-width 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#workspaces button:hover {
+  background-color: #8a8fae;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background-color: #c6cae0;
+  min-width: 50px;
+}
+
+#workspaces button.urgent {
+  background-color: #c95f6b;
+}
+
+#clock {
+  color: #c6cae0;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 14px;
+  letter-spacing: 0.3px;
+}
