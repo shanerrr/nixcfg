@@ -4,7 +4,7 @@ Personal NixOS configuration: flakes + home-manager + niri (Wayland). NixOS 26.0
 
 ## Structure
 
-    ~/nixxy/
+    /etc/nixos/                # repo lives here; owned by your user, not root
     ├── flake.nix              # inputs: nixpkgs 26.05, home-manager, niri-flake
     ├── flake.lock
     ├── hosts/
@@ -62,7 +62,7 @@ Follow this [guide](https://www.tonybtw.com/tutorial/nixos-from-scratch/)
 
 4. **Fix ownership immediately after first boot.** The repo was cloned as root; claim it before doing anything else:
 
-       sudo chown -R shaner:users ~/nixxy
+       sudo chown -R shaner:users /etc/nixos
 
    A root-owned repo causes git "dubious ownership" errors and home-manager failures. Never run `sudo git` in this repo.
 
@@ -75,16 +75,18 @@ Paste the output at https://github.com/settings/keys (Authentication Key).
 
 ## Ongoing rebuilds
 
-Always run from `~/nixxy` and stage new files before every rebuild:
+Always run from `/etc/nixos` and stage new files before every rebuild:
 
-    cd ~/nixxy
+    cd /etc/nixos
     git add -A
     sudo nixos-rebuild switch --flake .#<host>
+
+`nixos-generate-config` will drop a `configuration.nix` and `hardware-configuration.nix` at the repo root if you ever re-run it — those are ignored by `.gitignore` since the real per-host files live in `hosts/<host>/`.
 
 ## Notes
 
 - Flakes only read **git-tracked** files. Run `git add -A` before every rebuild or new files will appear "missing".
-- `home/` (repo folder) ≠ `/home` (filesystem). Config goes in `~/nixxy/home/`, not `/home/`.
+- `home/` (repo folder) ≠ `/home` (filesystem). Config goes in `/etc/nixos/home/`, not `/home/`.
 - niri keybinds replace **all** defaults — define every bind you need. VT switching (Ctrl+Alt+F2) is native, not a bind. Recovery if locked out: Ctrl+Alt+F2 → TTY.
 - Use `pkgs.tuigreet`, not `pkgs.greetd.tuigreet` (moved to top-level).
 - Don't put rofi/kitty in `systemPackages` — the home-manager modules install them.

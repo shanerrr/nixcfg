@@ -69,7 +69,7 @@
 
     # Outputs (per host )
     outputs = {
-        nyx = {
+        nixxy = {
             "DP-1" = {
                 mode = { width = 1920; height = 1080; refresh = 60.000; };
                 position = { x = 0; y = 650; };
@@ -88,7 +88,7 @@
             };
         };
 
-        nixxy = {
+        nyx = {
             "HDMI-A-1" = {
                 mode = { width = 1920; height = 1080; refresh = 60.000; };
                 position = { x = 0; y = 650; };
