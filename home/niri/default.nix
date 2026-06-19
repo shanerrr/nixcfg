@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  ##### Launcher (rofi) — modern rofi has Wayland support built in #####
-  programs.rofi.enable = true;
-
   ##### niri #####
   programs.niri.settings = {
     hotkey-overlay.skip-at-startup = true;

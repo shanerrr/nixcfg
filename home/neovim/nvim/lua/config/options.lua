@@ -19,10 +19,15 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "no"
 
 vim.opt.clipboard = "unnamedplus"
-vim.g.mapleader = " "
-
--- sessions managment
-vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize"
 
 -- global lualine
 vim.opt.laststatus = 3
+
+-- exclude terminal buffers from session save
+vim.opt.sessionoptions:remove("terminal")
+
+-- LSP-based folding (nvim 0.11+)
+vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
+vim.o.foldmethod = "expr"
+vim.o.foldtext = ""
+vim.o.foldlevelstart = 99

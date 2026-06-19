@@ -1,20 +1,5 @@
 return {
 	{
-		"nvim-mini/mini.nvim",
-		version = "*",
-		config = function()
-			require("mini.surround").setup()
-			require("mini.pairs").setup()
-			require("mini.move").setup()
-			require("mini.icons").setup()
-		end,
-	},
-	{
-		"folke/persistence.nvim",
-		event = "BufReadPre",
-		opts = {},
-	},
-	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,

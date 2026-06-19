@@ -6,6 +6,8 @@
     ./niri
     ./neovim
     ./kitty
+    ./rofi
+    ./waybar
   ];
 
   home.username = "shaner";

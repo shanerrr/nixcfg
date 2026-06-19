@@ -41,5 +41,18 @@
     git
   ];
 
-  fonts.packages = with pkgs; [ noto-fonts dejavu_fonts ];
+  fonts = {
+    packages = with pkgs; [
+      inter
+      nerd-fonts.jetbrains-mono
+      noto-fonts
+      noto-fonts-color-emoji
+    ];
+    fontconfig.defaultFonts = {
+      sansSerif = [ "Inter" "Noto Sans" ];
+      serif     = [ "Noto Serif" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      emoji     = [ "Noto Color Emoji" ];
+    };
+  };
 }

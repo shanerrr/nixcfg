@@ -8,7 +8,6 @@
     vimAlias = true;
   };
 
-  # init.lua should be in /neovim/nvim in this repo
   xdg.configFile."nvim".source = ./nvim;
 
   home.packages = with pkgs; [
@@ -17,6 +16,5 @@
     ripgrep      # snacks.picker grep
     fd           # snacks.picker files
     nodejs       # many LSP servers / Mason-installed tools
-    nerd-fonts.jetbrains-mono   # if your config expects glyphs
   ];
 }

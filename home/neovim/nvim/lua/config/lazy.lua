@@ -19,17 +19,14 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-    -- mainly for nixOS so lazy-lock lives outside for write access
-    lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
+	-- NixOS: lockfile lives outside the read-only nix store
+	lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
 	checker = { enabled = true },
 	performance = {
 		rtp = {
-			-- disable some rtp plugins
 			disabled_plugins = {
 				"gzip",
-				-- "matchit",
-				-- "matchparen",
-				-- "netrwPlugin",
+				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
 				"tutor",
