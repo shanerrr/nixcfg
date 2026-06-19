@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, osConfig, ... }:
 
 {
   ##### niri #####
@@ -67,25 +67,46 @@
     { command = [ "swaybg" "-i" "/home/shaner/Pictures/wallpaper.png" "-m" "fill" ]; }
     ];
 
-    # Outputs
+    # Outputs (per host )
     outputs = {
-        "DP-1" = {
-            mode = { width = 1920; height = 1080; refresh = 60.000; };
-            position = { x = 0; y = 650; };
+        nyx = {
+            "DP-1" = {
+                mode = { width = 1920; height = 1080; refresh = 60.000; };
+                position = { x = 0; y = 650; };
+            };
+
+            "DP-2" = {
+                mode = { width = 1920; height = 1080; refresh = 144.000; };
+                focus-at-startup = true;
+                position = { x = 1920; y = 650; };
+            };
+
+            "HDMI-A-1" = {
+                mode = { width = 1920; height = 1080; refresh = 60.000; };
+                transform.rotation = 270;
+                position = { x = 3840; y = 0; };
+            };
         };
 
-        "DP-2" = {
-            mode = { width = 1920; height = 1080; refresh = 144.000; };
-            focus-at-startup = true;
-            position = { x = 1920; y = 650; };
-        };
+        nixxy = {
+            "HDMI-A-1" = {
+                mode = { width = 1920; height = 1080; refresh = 60.000; };
+                position = { x = 0; y = 650; };
+            };
 
-        "HDMI-A-1" = {
-            mode = { width = 1920; height = 1080; refresh = 60.000; };
-            transform.rotation = 270;
-            position = { x = 3840; y = 0; };
+            "DP-1" = {
+                mode = { width = 1920; height = 1080; refresh = 144.000; };
+                focus-at-startup = true;
+                position = { x = 1920; y = 650; };
+            };
+
+            "DVI-I-1" = {
+                mode = { width = 1920; height = 1080; refresh = 60.000; };
+                transform.rotation = 270;
+                position = { x = 3840; y = 0; };
+            };
         };
-    };
+    }.${osConfig.networking.hostName};
 
     window-rules = [
     {

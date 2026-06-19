@@ -15,12 +15,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }: {
-    # Build with:  sudo nixos-rebuild switch --flake .#nixxy
-    nixosConfigurations.nixxy = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, niri, ... }:
+  let
+    mkHost = hostPath: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/nixxy
+        hostPath
         niri.nixosModules.niri
         home-manager.nixosModules.home-manager
         {
@@ -33,5 +33,9 @@
         }
       ];
     };
+  in {
+    # Build with:  sudo nixos-rebuild switch --flake .#<host>
+    nixosConfigurations.nixxy = mkHost ./hosts/nixxy;
+    nixosConfigurations.nyx   = mkHost ./hosts/nyx;
   };
 }

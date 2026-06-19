@@ -7,19 +7,29 @@ Personal NixOS configuration: flakes + home-manager + niri (Wayland). NixOS 26.0
     ~/nixxy/
     ├── flake.nix              # inputs: nixpkgs 26.05, home-manager, niri-flake
     ├── flake.lock
-    ├── hosts/nixxy/
-    │   ├── default.nix             # machine-specific: bootloader, hostname, user, timezone
-    │   └── hardware-configuration.nix   # machine-generated, committed
+    ├── hosts/
+    │   ├── nixxy/             # one dir per machine: default.nix + hardware-configuration.nix
+    │   └── nyx/
     ├── modules/
     │   └── desktop.nix        # reusable desktop stack: niri, greetd/tuigreet, portals, pipewire
     └── home/                  # home-manager (per-user dotfiles) — NOT the /home filesystem path
-        ├── default.nix        # imports niri.nix, neovim.nix
-        ├── niri.nix           # kitty, rofi, niri keybinds
-        ├── neovim.nix         # installs neovim + toolchain; symlinks ./nvim into ~/.config/nvim
-        └── nvim/              # raw lazy.nvim config (init.lua, lua/, lazy-lock.json)
+        ├── default.nix        # entrypoint; imports the subdirs below
+        ├── git/
+        ├── kitty/
+        ├── niri/              # niri keybinds + session config
+        ├── neovim/            # installs neovim + toolchain; lazy.nvim config lives here
+        ├── rofi/
+        └── waybar/
 
 Rule: machine config → `hosts/`, desktop stack → `modules/`, per-user dotfiles → `home/`.
 A `.nix` file does nothing unless it's in an `imports` list up the chain.
+
+## Hosts
+
+- `nixxy` — primary
+- `nyx` — secondary
+
+Substitute `<host>` below with whichever you're building.
 
 ## Fresh install on a new machine
 
@@ -36,16 +46,16 @@ Follow this [guide](https://www.tonybtw.com/tutorial/nixos-from-scratch/)
        nix-shell -p git
        git clone https://github.com/shanerrr/nixxy /mnt/etc/nixos
        nixos-generate-config --root /mnt
-       cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/nixxy/
+       cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/<host>/
 
    Commit `hardware-configuration.nix` — flakes only see git-tracked files; the UUIDs are not secrets.
 
 3. Install (use `nixos-install`, **not** `nixos-rebuild switch` — rebuild targets the live USB and fails the bootloader check):
 
-       nixos-install --flake /mnt/etc/nixos#nixxy
+       nixos-install --flake /mnt/etc/nixos#<host>
 
        ## type your password
-       nixos-enter --root /mnt -c 'passwd tony'
+       nixos-enter --root /mnt -c 'passwd shaner'
        reboot
 
    Set the root/user password when prompted, then reboot.
@@ -56,13 +66,20 @@ Follow this [guide](https://www.tonybtw.com/tutorial/nixos-from-scratch/)
 
    A root-owned repo causes git "dubious ownership" errors and home-manager failures. Never run `sudo git` in this repo.
 
+## GitHub SSH
+
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+    cat ~/.ssh/id_ed25519.pub
+
+Paste the output at https://github.com/settings/keys (Authentication Key).
+
 ## Ongoing rebuilds
 
 Always run from `~/nixxy` and stage new files before every rebuild:
 
     cd ~/nixxy
     git add -A
-    sudo nixos-rebuild switch --flake .#nixxy
+    sudo nixos-rebuild switch --flake .#<host>
 
 ## Notes
 
