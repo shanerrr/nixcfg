@@ -18,8 +18,9 @@ window#waybar {
 
 #workspaces button {
   padding: 0;
-  margin: 13px 3px;
+  margin: 8px 3px;
   min-width: 14px;
+  min-height: 0;
   font-size: 0;
   background-color: #4a4d64;
   border-radius: 999px;
@@ -34,7 +35,6 @@ window#waybar {
 #workspaces button.active,
 #workspaces button.focused {
   background-color: #c6cae0;
-  margin: 12px 3px;
   min-width: 60px;
 }
 
@@ -44,7 +44,7 @@ window#waybar {
 
 #clock {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0 14px;
   letter-spacing: 0.3px;
 }
