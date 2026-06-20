@@ -24,25 +24,12 @@ return {
 				},
 				win = { style = "lazygit" },
 			},
-			explorer = {
-				enabled = true,
-				replace_netrw = true,
-				follow_file = true,
-			},
 			bigfile = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
 			picker = {
 				enabled = true,
 				layout = "telescope",
-				sources = {
-					explorer = {
-						auto_close = false,
-						follow_file = true,
-						follow = true,
-						hidden = true,
-					},
-				},
 				formatters = {
 					file = { filename_first = true },
 				},
@@ -85,7 +72,6 @@ return {
 			},
 		},
 		keys = {
-			{ "<C-b>", function() Snacks.explorer.open() end, desc = "Open explorer" },
 			{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Buffer delete" },
 			{ "<leader>ba", function() Snacks.bufdelete.all() end, desc = "Buffer delete all" },
 			{ "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Buffer delete other" },

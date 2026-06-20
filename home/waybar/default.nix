@@ -9,16 +9,10 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 18;
         spacing = 0;
 
         modules-left   = [ "custom/logo" "niri/workspaces" ];
         modules-center = [ "clock" ];
-
-        "custom/logo" = {
-          format = "";
-          tooltip = false;
-        };
 
         "niri/workspaces" = {
           on-click = "activate";

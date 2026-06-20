@@ -8,14 +8,8 @@
 }
 
 window#waybar {
-  background-color: rgba(10, 12, 24, 0.95);
+  background-color: rgba(10, 12, 24, 0.85);
   color: #c6cae0;
-}
-
-#custom-logo {
-  color: #8c7bd6;
-  font-size: 13px;
-  padding: 0 10px 0 12px;
 }
 
 #workspaces {
@@ -24,9 +18,8 @@ window#waybar {
 
 #workspaces button {
   padding: 0;
-  margin: 9px 3px;
-  min-width: 16px;
-  min-height: 12px;
+  margin: 13px 3px;
+  min-width: 14px;
   font-size: 0;
   background-color: #4a4d64;
   border-radius: 999px;
@@ -41,7 +34,8 @@ window#waybar {
 #workspaces button.active,
 #workspaces button.focused {
   background-color: #c6cae0;
-  min-width: 50px;
+  margin: 12px 3px;
+  min-width: 60px;
 }
 
 #workspaces button.urgent {
@@ -49,9 +43,8 @@ window#waybar {
 }
 
 #clock {
-  color: #c6cae0;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   padding: 0 14px;
   letter-spacing: 0.3px;
 }
