@@ -19,8 +19,22 @@
     open = false;
 
     nvidiaSettings = true;
+    nvidiaPersistenced = true;
     package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
+
+  # Cap NVIDIA's free buffer pool so niri/Wayland doesn't leak VRAM.
+  environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors.json".text = ''
+    {
+      "rules": [ { "pattern": [], "profile": "Limit Free Buffer Pool" } ],
+      "profiles": [
+        {
+          "name": "Limit Free Buffer Pool",
+          "settings": [ { "key": "GLVidHeapReuseRatio", "value": 0 } ]
+        }
+      ]
+    }
+  '';
 
   ##### Flakes #####
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

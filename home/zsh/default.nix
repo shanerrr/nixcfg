@@ -4,6 +4,7 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
+    defaultKeymap = "viins";
     # syntaxHighlighting = {
     #   enable = true;
     #   styles.unknown-token = "fg=#c95f6b";
@@ -18,9 +19,11 @@
     initContent = ''
       PROMPT='%F{#2bb0d6}[%n@%m:%~]%f%# '
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4a4d64"
+      KEYTIMEOUT=1
     '';
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake .#${osConfig.networking.hostName}";
+      clean = "sudo nix-collect-garbage -d && sudo nixos-rebuild boot --flake .#${osConfig.networking.hostName}";
     };
   };
 }
