@@ -8,6 +8,7 @@
     ./kitty
     ./rofi
     ./waybar
+    ./zsh
   ];
 
   home.username = "shaner";
@@ -18,6 +19,7 @@
     fastfetch
     lazygit
     swaybg
+    wl-clipboard
     claude-code
     discord
   ];

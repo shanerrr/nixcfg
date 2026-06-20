@@ -36,6 +36,9 @@
   # Run Electron/Chromium apps natively on Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     git
