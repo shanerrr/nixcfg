@@ -23,6 +23,7 @@
     '';
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake .#${osConfig.networking.hostName}";
+      upgrade = "nix flake update && sudo nixos-rebuild switch --flake .#${osConfig.networking.hostName}";
       clean = "sudo nix-collect-garbage -d && sudo nixos-rebuild boot --flake .#${osConfig.networking.hostName}";
     };
   };
