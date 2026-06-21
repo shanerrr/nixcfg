@@ -8,7 +8,7 @@
 
   # enable unfree for only certain packages
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules"];
+    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules" "spotify" ];
 
   #### Nvidia (legacy_580 drivers) #####
   hardware.graphics.enable = true;

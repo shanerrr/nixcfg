@@ -22,6 +22,8 @@
     wl-clipboard
     claude-code
     discord
+    bun
+    spotify
   ];
 
   programs.home-manager.enable = true;
