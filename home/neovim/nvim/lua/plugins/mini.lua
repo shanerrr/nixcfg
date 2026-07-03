@@ -8,6 +8,8 @@ return {
 			require("mini.move").setup()
 			require("mini.icons").setup()
 			MiniIcons.mock_nvim_web_devicons()
+			require("mini.git").setup()
+			require("mini.diff").setup()
 			require("mini.statusline").setup()
 			require("mini.tabline").setup()
 		end,

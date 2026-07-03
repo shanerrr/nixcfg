@@ -9,6 +9,14 @@
   # Firefox (browser)
   programs.firefox.enable = true;
 
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true; 
+    localNetworkGameTransfers.openFirewall = true; 
+  };
+
   # Graphical login that starts a niri session
   services.greetd = {
     enable = true;

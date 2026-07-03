@@ -24,6 +24,8 @@
     discord
     bun
     spotify
+    flyctl
+    openssl
   ];
 
   programs.home-manager.enable = true;
