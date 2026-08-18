@@ -34,7 +34,7 @@
 
   # enable unfree for only certain packages
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules" "spotify" "steam" "steam-unwrapped" "steam-original" "steam-run"];
+    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "discord-unwrapped" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules" "spotify" "steam" "steam-unwrapped" "steam-original" "steam-run"];
 
   ##### Flakes #####
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
