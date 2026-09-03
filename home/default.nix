@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -9,10 +9,16 @@
     ./rofi
     ./waybar
     ./zsh
+    inputs.zen-browser.homeModules.twilight-official
   ];
 
   home.username = "shaner";
   home.homeDirectory = "/home/shaner";
+
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
+  };
 
   # Per-user packages go here
   home.packages = with pkgs; [
@@ -23,10 +29,10 @@
     claude-code
     discord
     (bun.overrideAttrs (old: rec {
-      version = "1.3.14";
+      version = "1.4.0";
       src = pkgs.fetchurl {
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
-        hash = "sha256-lR7iruhV8IWVruxiJSJqKY0/6oOj3NZGXAnLzN9+hI8=";
+        hash = "sha256-LQP7X7g6yLVnrKCigbLOGhoZ1Ij1bClo2Iw/Jekv5FI=";
       };
     }))
     spotify

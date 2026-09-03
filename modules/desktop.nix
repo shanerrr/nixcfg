@@ -6,9 +6,6 @@
   programs.niri.package = pkgs.niri;
   niri-flake.cache.enable = true;
 
-  # Firefox (browser)
-  programs.firefox.enable = true;
-
   programs.nix-ld.enable = true;
 
   # Steam

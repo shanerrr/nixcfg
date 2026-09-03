@@ -13,9 +13,17 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake";
+        inputs = {
+            nixpkgs.follows = "nixpkgs";
+            home-manager.follows = "home-manager";
+        };
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, niri, ... }:
   let
     mkHost = hostPath: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -27,6 +35,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
             users.shaner = import ./home;
             backupFileExtension = "backup";
           };
