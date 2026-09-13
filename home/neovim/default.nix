@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.neovim = {
@@ -8,7 +8,8 @@
     vimAlias = true;
   };
 
-  xdg.configFile."nvim".source = ./nvim;
+  # Source of truth is github:shanerrr/nvim, not this repo.
+  xdg.configFile."nvim".source = inputs.nvim-config;
 
   home.packages = with pkgs; [
     gcc          # tree-sitter compiles parsers with a C compiler

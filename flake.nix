@@ -21,6 +21,11 @@
             home-manager.follows = "home-manager";
         };
     };
+
+    nvim-config = {
+      url = "github:shanerrr/nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, niri, ... }:
