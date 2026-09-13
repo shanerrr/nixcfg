@@ -39,6 +39,7 @@
     flyctl
     openssl
     pnpm
+    inputs.herdr.packages.${pkgs.system}.default
   ];
 
   # Per-project toolchains via shell.nix + `use nix` in .envrc

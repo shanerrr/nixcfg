@@ -26,6 +26,11 @@
       url = "github:shanerrr/nvim";
       flake = false;
     };
+
+    herdr = {
+      url = "github:herdrdev/herdr/v0.9.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, niri, ... }:
