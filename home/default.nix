@@ -29,10 +29,10 @@
     claude-code
     discord
     (bun.overrideAttrs (old: rec {
-      version = "1.4.0";
+      version = "1.4.4";
       src = pkgs.fetchurl {
         url = "https://github.com/oven-sh/bun/releases/download/bun-v${version}/bun-linux-x64.zip";
-        hash = "sha256-LQP7X7g6yLVnrKCigbLOGhoZ1Ij1bClo2Iw/Jekv5FI=";
+        hash = "sha256-v4zL+ysLgBWeD5ptFcVTF63YB3U028YTCj7bUvzLOVw=";
       };
     }))
     spotify
@@ -46,6 +46,11 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
   };
 
   programs.home-manager.enable = true;
