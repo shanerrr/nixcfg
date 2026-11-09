@@ -6,21 +6,17 @@
     ../../modules/desktop.nix
   ];
 
-  # enable unfree for only certain packages
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules" "spotify" ];
-
-  #### Nvidia (legacy_580 drivers) #####
+  #### Nvidia (latest open drivers) #####
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
-    open = false;
+    open = true;
 
     nvidiaSettings = true;
     nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Cap NVIDIA's free buffer pool so niri/Wayland doesn't leak VRAM.
@@ -35,6 +31,10 @@
       ]
     }
   '';
+
+  # enable unfree for only certain packages
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "claude-code" "discord" "discord-unwrapped" "nvidia-x11" "nvidia-settings" "nvidia-persistenced" "nvidia-kernel-modules" "spotify" "steam" "steam-unwrapped" "steam-original" "steam-run"];
 
   ##### Flakes #####
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
