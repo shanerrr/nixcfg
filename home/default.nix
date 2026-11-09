@@ -37,6 +37,7 @@
     }))
     spotify
     flyctl
+    cloudflared
     openssl
     pnpm
     inputs.herdr.packages.${pkgs.system}.default
